@@ -1,0 +1,1104 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bewerbung Philipp Krohn | Panpharma</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8F9FA;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1280px;
+        }
+        .section-padding {
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+        }
+        .card {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .tab-button {
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+        .tab-button.active {
+            transform: scale(1.05);
+            background-color: #2196F3;
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            border-radius: 50%;
+            display: none;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: opacity 0.3s;
+        }
+        .scroll-top:hover {
+            opacity: 0.8;
+        }
+        .cta-button {
+            background-color: #0073B1;
+            color: white;
+            font-weight: 600;
+            padding: 12px 28px;
+            border-radius: 9999px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .cta-button:hover {
+            background-color: #005f94;
+        }
+        .list-item-icon {
+            color: #0073B1;
+            width: 1.5rem;
+            margin-right: 0.5rem;
+        }
+        .interactive-icon {
+            color: #0073B1;
+            font-size: 2rem;
+            transition: transform 0.3s ease;
+        }
+        .interactive-icon:hover {
+            transform: scale(1.1);
+        }
+        .kpi-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            margin: 0 1rem;
+            position: relative;
+        }
+        .kpi-circle.current {
+            background: linear-gradient(45deg, #DC2626, #EF4444);
+        }
+        .kpi-circle.target {
+            background: linear-gradient(45deg, #22C55E, #16A34A);
+        }
+        .kpi-arrow {
+            color: #4B5563;
+        }
+        .flip-card {
+            background-color: transparent;
+            width: 100%;
+            height: 250px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .flip-card-front {
+            background-color: white;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .flip-card-back {
+            background-color: #0073B1;
+            color: white;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* Progress Stepper */
+        .stepper {
+            display: flex;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        .stepper-line {
+            position: absolute;
+            top: 2rem;
+            left: 10%;
+            right: 10%;
+            height: 4px;
+            background-color: #E2E8F0;
+            z-index: 0;
+        }
+        .stepper-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        .stepper-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            background-color: #6B7280;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            border: 4px solid white;
+            transition: background-color 0.3s ease;
+        }
+        .stepper-item.active .stepper-icon {
+            background-color: #0073B1;
+        }
+        .stepper-item.active .stepper-label {
+            color: #0073B1;
+        }
+        .stepper-label {
+            margin-top: 0.5rem;
+            font-weight: 600;
+            color: #4B5563;
+        }
+        .roadmap-content {
+            opacity: 0;
+            height: 0;
+            overflow: hidden;
+            transition: opacity 0.5s ease-in-out, height 0.5s ease-in-out;
+        }
+        .roadmap-content.active {
+            opacity: 1;
+            height: auto;
+        }
+
+        /* Interactive kununu simulator */
+        .kununu-score-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            margin-top: 2rem;
+        }
+        .kununu-score-display {
+            font-size: 5rem;
+            font-weight: bold;
+            color: #4B5563;
+        }
+        .kununu-slider-container {
+            width: 80%;
+            margin-top: 1rem;
+        }
+        .kununu-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 15px;
+            border-radius: 5px;
+            background: #D1D5DB;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
+        .kununu-slider:hover {
+            opacity: 1;
+        }
+        .kununu-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #0073B1;
+            cursor: pointer;
+        }
+        .kununu-slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: #0073B1;
+            cursor: pointer;
+        }
+
+        /* Interactive regional map */
+        .regional-map {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            background-color: #E2E8F0;
+            border-radius: 1rem;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #6B7280;
+            font-style: italic;
+        }
+        .map-pin {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            background-color: #0073B1;
+            border-radius: 50%;
+            border: 3px solid white;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .map-pin:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 10px rgba(0, 115, 177, 0.5);
+        }
+        /* New styling for the interactive kununu section */
+        .kununu-step {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .kununu-step.active {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .kununu-step-icon {
+            font-size: 2.5rem;
+            color: #E2E8F0;
+        }
+        .kununu-step.active .kununu-step-icon {
+            color: #0073B1;
+        }
+        .kununu-detail-text {
+            display: none;
+        }
+        .kununu-detail-text.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+        .onboarding-card {
+            border: 2px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+        .onboarding-card.active {
+            border-color: #0073B1;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-container {
+            background-color: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            width: 90%;
+            max-width: 800px;
+            max-height: 90%;
+            overflow-y: auto;
+            position: relative;
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+<!-- Navigationsleiste -->
+<nav class="fixed top-0 left-0 w-full bg-white bg-opacity-90 backdrop-blur-sm z-50 shadow-md">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="#hero" class="text-2xl font-bold text-[#0073B1] flex items-center">
+            <span class="mr-2">🧪</span> Philipp Krohn
+        </a>
+        <div class="space-x-4 md:space-x-8 hidden md:flex">
+            <a href="#analyse" class="text-gray-600 hover:text-[#0073B1] font-medium transition-colors duration-200">Analyse</a>
+            <a href="#roadmap" class="text-gray-600 hover:text-[#0073B1] font-medium transition-colors duration-200">Roadmap</a>
+            <a href="#beispiele" class="text-gray-600 hover:text-[#0073B1] font-medium transition-colors duration-200">Beispiele</a>
+            <a href="#video" class="text-gray-600 hover:text-[#0073B1] font-medium transition-colors duration-200">Video</a>
+            <a href="#kontakt" class="text-gray-600 hover:text-[#0073B1] font-medium transition-colors duration-200">Kontakt</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero-Sektion -->
+<header id="hero" class="relative bg-[#0073B1] text-white py-32 md:py-48 flex items-center justify-center overflow-hidden">
+    <img src="Headerbild.png" alt="Panpharma Team" class="absolute inset-0 w-full h-full object-cover opacity-80">
+    <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+    <div class="relative container mx-auto text-center px-6">
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tighter">
+            Injecting Impact. Karriere mit Wirkung.
+        </h1>
+        <p class="mt-4 text-lg md:text-xl font-light max-w-2xl mx-auto">
+            Meine 100-Tage-Roadmap zur Stärkung der Arbeitgebermarke von Panpharma in Trittau.
+        </p>
+    </div>
+</header>
+
+<!-- Persönliche Einleitung -->
+<section class="section-padding">
+    <div class="container mx-auto px-6 text-center">
+        <div class="card p-8 md:p-12 max-w-4xl mx-auto flex flex-col md:flex-row items-center space-y-6 md:space-y-0 md:space-x-8">
+            <div class="w-32 h-32 md:w-48 md:h-48 rounded-full overflow-hidden flex-shrink-0 border-4 border-[#0073B1] shadow-lg">
+                <img src="Philipp Krohn klein.png" alt="Foto von Philipp Krohn" class="w-full h-full object-cover">
+            </div>
+            <div class="text-left">
+                <h2 class="text-3xl font-bold mb-2">Hallo liebes Panpharma Team,</h2>
+                <p class="text-lg text-gray-700">
+                    diese Seite ist ein kleiner Ausblick darauf, wie ich HR-Arbeit verstehe: praxisnah, datenbasiert und mit klaren Ideen für die nächsten Schritte. Sie ergänzt meine Bewerbung um einen direkten Einblick in meine Arbeitsweise.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Analyse-Sektion -->
+<section id="analyse" class="section-padding bg-gray-100">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">Panpharma aus der Außenperspektive</h2>
+        <p class="text-lg text-gray-600 mb-8 max-w-3xl mx-auto text-center">
+            Als Außenstehender und Recruiting-Experte nehme ich Panpharma als ein Unternehmen mit einer starken Mission und einem klaren Wertefundament wahr. Gleichzeitig sehe ich konkrete Potenziale, um die Arbeitgebermarke noch sichtbarer und attraktiver zu machen.
+        </p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <!-- Interaktive Karte 1 -->
+            <div class="card p-8 flex flex-col items-center justify-center cursor-pointer" data-modal="mission-modal">
+                <i class="fas fa-heartbeat text-5xl text-[#0073B1] mb-4"></i>
+                <h3 class="text-2xl font-bold text-center">Sinnstiftende Mission</h3>
+            </div>
+            <!-- Interaktive Karte 2 -->
+            <div class="card p-8 flex flex-col items-center justify-center cursor-pointer" data-modal="reputation-modal">
+                <i class="fas fa-chart-line text-5xl text-[#0073B1] mb-4"></i>
+                <h3 class="text-2xl font-bold text-center">Steigerbare Reputation</h3>
+            </div>
+            <!-- Interaktive Karte 3 -->
+            <div class="card p-8 flex flex-col items-center justify-center cursor-pointer" data-modal="growth-modal">
+                <i class="fas fa-industry text-5xl text-[#0073B1] mb-4"></i>
+                <h3 class="text-2xl font-bold text-center">Wachstum am Standort Trittau</h3>
+            </div>
+            <!-- Interaktive Karte 4 -->
+            <div class="card p-8 flex flex-col items-center justify-center cursor-pointer" data-modal="commuter-modal">
+                <i class="fas fa-map-marked-alt text-5xl text-[#0073B1] mb-4"></i>
+                <h3 class="text-2xl font-bold text-center">Pendlerpotential nutzen</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Roadmap-Sektion (interaktives Element) -->
+<section id="roadmap" class="section-padding bg-white">
+    <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12">Meine 100-Tage-Roadmap im Detail</h2>
+        <p class="text-lg text-gray-600 mb-8 max-w-3xl mx-auto">
+            Dieser Plan ist ein fundierter Fahrplan, um Ihre Arbeitgebermarke messbar und nachhaltig zu stärken. Es ist eine dreistufige Reise, die von der Analyse bis zur Skalierung führt.
+        </p>
+
+        <!-- Interaktiver Fortschrittsbalken -->
+        <div class="stepper mb-12">
+            <div class="stepper-line"></div>
+            <div class="stepper-item active" data-phase="phase1">
+                <div class="stepper-icon"><i class="fas fa-search"></i></div>
+                <div class="stepper-label">Tag 1-30</div>
+            </div>
+            <div class="stepper-item" data-phase="phase2">
+                <div class="stepper-icon"><i class="fas fa-bullhorn"></i></div>
+                <div class="stepper-label">Tag 31-60</div>
+            </div>
+            <div class="stepper-item" data-phase="phase3">
+                <div class="stepper-icon"><i class="fas fa-chart-line"></i></div>
+                <div class="stepper-label">Tag 61-100</div>
+            </div>
+        </div>
+
+        <!-- Roadmap Inhalte -->
+        <div id="roadmap-content-container">
+            <!-- Phase 1 Content -->
+            <div id="phase1-content" class="roadmap-content active">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+                    <div class="card p-6 cursor-pointer" data-roadmap-modal="audit">
+                        <h3 class="text-2xl font-bold text-[#0073B1] mb-4 flex items-center"><i class="fas fa-search mr-2"></i> Audit & KPI-Analyse</h3>
+                        <p class="text-gray-700 mb-2">
+                            <strong>Warum?</strong> "You can't manage what you can't measure." Mein erster Schritt ist es, den Status Quo zu verstehen. Wir schauen uns an, woher Bewerbungen kommen (Source-of-Hire), wie lange es dauert, eine Stelle zu besetzen (Time-to-Hire) und wo wir im Prozess die meisten Kandidaten verlieren (Funnel-Analyse).
+                        </p>
+                    </div>
+                    <div class="card p-6 cursor-pointer" data-roadmap-modal="sla">
+                        <h3 class="text-2xl font-bold text-[#0073B1] mb-4 flex items-center"><i class="fas fa-clock mr-2"></i> 24-72-SLA für Bewerbungen</h3>
+                        <p class="text-gray-700 mb-2">
+                            <strong>Warum?</strong> Eine schnelle und transparente Kommunikation ist der wichtigste Hebel für eine positive Candidate Experience. Wir setzen klare Service-Level-Agreements für die Rückmeldung an Bewerber fest.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 2 Content -->
+            <div id="phase2-content" class="roadmap-content">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+                    <div class="card p-6 cursor-pointer" data-roadmap-modal="content-campaign">
+                        <h3 class="text-2xl font-bold text-[#0073B1] mb-4 flex items-center"><i class="fas fa-bullhorn mr-2"></i> "Trittau Works" Content-Kampagne</h3>
+                        <p class="text-gray-700 mb-2">
+                            <strong>Warum?</strong> Authentizität schlägt Perfektion. Wir erzählen keine Geschichten über Panpharma, sondern lassen die Mitarbeiter die Geschichten von Panpharma erzählen.
+                        </p>
+                    </div>
+                    <div class="card p-6 cursor-pointer" data-roadmap-modal="open-hour">
+                        <h3 class="text-2xl font-bold text-[#0073B1] mb-4 flex items-center"><i class="fas fa-door-open mr-2"></i> Open-Hour & Campus Recruiting</h3>
+                        <p class="text-gray-700 mb-2">
+                            <strong>Warum?</strong> Der persönliche Kontakt baut Barrieren ab und schafft Vertrauen. Das "Open-Hour"-Konzept holt Interessenten direkt am Standort ab und macht das Unternehmen erlebbar.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 3 Content -->
+            <div id="phase3-content" class="roadmap-content">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+                    <div class="card p-6 cursor-pointer" data-roadmap-modal="funnel-optimization">
+                        <h3 class="text-2xl font-bold text-[#0073B1] mb-4 flex items-center"><i class="fas fa-chart-line mr-2"></i> Funnel-Optimierung & Skalierung</h3>
+                        <p class="text-gray-700 mb-2">
+                            <strong>Warum?</strong> Die effizientesten Recruiting-Strategien sind datengetrieben. Wir messen den Erfolg, um Budgets und Ressourcen gezielt dort einzusetzen, wo sie den größten Mehrwert schaffen.
+                        </p>
+                    </div>
+                    <div class="card p-6 cursor-pointer" data-roadmap-modal="referral">
+                        <h3 class="text-2xl font-bold text-[#0073B1] mb-4 flex items-center"><i class="fas fa-user-friends mr-2"></i> Referral-Programm & Talent-Pool-Pflege</h3>
+                        <p class="text-gray-700 mb-2">
+                            <strong>Warum?</strong> Die besten Empfehlungen kommen von den eigenen Mitarbeitern. Wir nutzen dieses Potenzial und bauen einen nachhaltigen Talent-Pool auf, um auch in Zukunft die richtigen Fachkräfte zu haben.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Beispiel-Sektion -->
+<section id="beispiele" class="section-padding bg-gray-100">
+    <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-12">Konkrete Beispiele & Visualisierung</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-12">
+            <!-- Kununu Beispiel -->
+            <div class="card p-8 flex flex-col justify-between">
+                <h3 class="text-2xl font-bold text-[#0073B1] mb-4 flex items-center">
+                    <i class="fas fa-star-half-alt mr-2"></i> Kununu Score Verbesserung
+                </h3>
+                <p class="text-gray-600 mb-6 text-left">
+                    Ein guter Kununu-Score ist ein Vertrauenssignal. So verwandeln wir einen durchschnittlichen Wert in einen messbaren Wettbewerbsvorteil. Klicken Sie auf die Schritte, um die Gründe hinter der Verbesserung zu sehen.
+                </p>
+                <div class="flex flex-col items-center">
+                    <div class="kununu-score-display mb-4">
+                        <span id="kununu-value">3.2</span><span class="text-xl"> / 5</span>
+                    </div>
+                    <div class="w-full flex justify-around">
+                        <div class="text-center kununu-step active" data-step="1">
+                            <div class="kununu-step-icon"><i class="fas fa-reply"></i></div>
+                            <div class="text-xs text-gray-500 mt-2">1. Antwortkultur</div>
+                        </div>
+                        <div class="text-center kununu-step" data-step="2">
+                            <div class="kununu-step-icon"><i class="fas fa-comments"></i></div>
+                            <div class="text-xs text-gray-500 mt-2">2. Feedback-Schleife</div>
+                        </div>
+                        <div class="text-center kununu-step" data-step="3">
+                            <div class="kununu-step-icon"><i class="fas fa-bullhorn"></i></div>
+                            <div class="text-xs text-gray-500 mt-2">3. Mitarbeiter-Aktivierung</div>
+                        </div>
+                    </div>
+                    <div class="mt-8 text-left kununu-detail-text active" id="kununu-detail-1">
+                        <h4 class="font-bold text-lg mb-2 text-[#0073B1]">Proaktive Antwortkultur</h4>
+                        <p class="text-gray-600 text-sm">Eine Antwortrate von 100% auf jede neue Bewertung, innerhalb von 7 Tagen. Das zeigt Wertschätzung und Engagement. So verwandeln wir Kritik in eine Chance.</p>
+                    </div>
+                    <div class="mt-8 text-left kununu-detail-text" id="kununu-detail-2">
+                        <h4 class="font-bold text-lg mb-2 text-[#0073B1]">Interne Feedback-Schleife</h4>
+                        <p class="text-gray-600 text-sm">Wir besprechen Bewertungen im Team und leiten aus der Kritik konkrete Verbesserungsmaßnahmen ab. Kununu wird so zum Spiegel und zur treibenden Kraft für die Unternehmensentwicklung.</p>
+                    </div>
+                    <div class="mt-8 text-left kununu-detail-text" id="kununu-detail-3">
+                        <h4 class="font-bold text-lg mb-2 text-[#0073B1]">Mitarbeiter-Aktivierung</h4>
+                        <p class="text-gray-600 text-sm">Mitarbeiter werden aktiv und transparent dazu ermutigt, eine Bewertung abzugeben. Ein höherer Sample-Size sorgt für ein repräsentativeres und glaubwürdigeres Bild des Unternehmens.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Jobanzeigen Beispiel -->
+            <div class="card p-8 flex flex-col justify-between">
+                <h3 class="text-2xl font-bold text-[#0073B1] mb-4 flex items-center">
+                    <i class="fas fa-bullseye mr-2"></i> Jobanzeige 2.0
+                </h3>
+                <p class="text-gray-600 mb-6 text-left">
+                    Eine Stellenanzeige sollte die Kandidaten direkt ansprechen und Emotionen wecken. Weg von generischen Floskeln, hin zu einer klaren, persönlichen Botschaft.
+                </p>
+                <div class="bg-gray-100 rounded-xl border p-6 text-left flex-grow flex flex-col justify-between">
+                    <div>
+                        <h4 class="text-lg font-bold">Maschinen- & Anlagenführer (m/w/d)</h4>
+                        <span class="text-sm text-gray-500">Panpharma GmbH, Trittau</span>
+                        <hr class="my-4">
+                        <div class="text-center font-bold text-lg text-gray-800 my-4">39.663 € pro Jahr</div>
+                        <p class="text-gray-700 mb-4 text-justify">
+                            Du suchst einen Job mit Wirkung? Bei Panpharma trägst du in Trittau direkt dazu bei, Leben zu retten. Mit unserer neuen Abfülllinie investieren wir in deine Zukunft. Bei uns bedienst du nicht nur Maschinen, sondern bist ein wichtiger Teil eines Teams, das mit modernster Technik die Gesundheitsversorgung sichert.
+                        </p>
+                        <a href="#" class="inline-block cta-button">Jetzt bewerben</a>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-4">
+                        <strong>Warum diese Anzeige funktioniert:</strong> Direkte Ansprache ("Du"), klare Benefits und die Verbindung der Rolle zum übergeordneten Sinn ("Leben retten"). Der Fokus liegt auf der persönlichen Wirkung des Kandidaten, nicht nur auf der Aufgabe.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Social Media Beispiel -->
+            <div class="card p-8 flex flex-col justify-between">
+                <h3 class="text-2xl font-bold text-[#0073B1] mb-4 flex items-center">
+                    <i class="fas fa-share-alt mr-2"></i> Social Media Content
+                </h3>
+                <p class="text-gray-600 mb-6 text-left">
+                    Social Media ist die Bühne für Geschichten. Wir zeigen keine leeren Slogans, sondern die Gesichter, die unsere Mission möglich machen.
+                </p>
+                <div class="bg-gray-100 rounded-xl border p-6 text-left flex-grow flex flex-col justify-between">
+                    <div>
+                        <img src="Posting.png" alt="Teamfoto aus der Produktion" class="rounded-lg mb-4 w-full h-auto">
+                        <p class="font-bold text-gray-800">Meet Jana! Jana ist erst seit 6 Monaten bei uns in der Abfüllung. Am Anfang musste sie sich erstmal in unsere neuen Anlagen reinfuchsen, aber jetzt sorgt sie dafür, dass jeden Tag tausende lebenswichtige Vials das Werk in Trittau verlassen. Danke, Jana!</p>
+                        <p class="text-sm text-gray-600 mt-2">
+                            #PanpharmaTeam #TrittauWorks #PharmaJobs #KarriereMitWirkung
+                        </p>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-4">
+                        <strong>Warum dieser Post funktioniert:</strong> Wir machen das Unternehmen nahbar und persönlich. Statt einer anonymen Botschaft erzählen wir die Geschichte einer realen Person. Das schafft Identifikation und Vertrauen.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Onboarding Beispiel -->
+            <div class="card p-8 flex flex-col justify-between">
+                <h3 class="text-2xl font-bold text-[#0073B1] mb-4 flex items-center">
+                    <i class="fas fa-sign-in-alt mr-2"></i> Digitale Onboarding-Journey
+                </h3>
+                <p class="text-gray-600 mb-6 text-left">
+                    Der erste Eindruck zählt. Ein digitaler, klar strukturierter Onboarding-Prozess sorgt für einen reibungslosen Start und bindet neue Mitarbeiter von Tag 1 an.
+                </p>
+                <div class="bg-gray-100 rounded-xl border p-6 text-left flex-grow flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center mb-4 cursor-pointer onboarding-card active" data-onboarding-modal="onboarding-step-1">
+                            <i class="fas fa-envelope-open-text interactive-icon mr-4"></i>
+                            <div>
+                                <h4 class="font-bold text-lg">Tag -14: Willkommens-E-Mail</h4>
+                                <p class="text-sm text-gray-600">Erste Infos, Kontakt zum Buddy, Ablauf der ersten Woche.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center mb-4 cursor-pointer onboarding-card" data-onboarding-modal="onboarding-step-2">
+                            <i class="fas fa-laptop-code interactive-icon mr-4"></i>
+                            <div>
+                                <h4 class="font-bold text-lg">Tag -7: Tech-Setup</h4>
+                                <p class="text-sm text-gray-600">Zugangsdaten und Hardware werden vorab versendet oder eingerichtet.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center mb-4 cursor-pointer onboarding-card" data-onboarding-modal="onboarding-step-3">
+                            <i class="fas fa-briefcase interactive-icon mr-4"></i>
+                            <div>
+                                <h4 class="font-bold text-lg">Tag 1: Reibungsloser Start</h4>
+                                <p class="text-sm text-gray-600">Der Arbeitsplatz ist vorbereitet, der Buddy steht bereit. Fokus liegt auf dem persönlichen Kennenlernen.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-500 mt-4">
+                        <strong>Warum dieses Element funktioniert:</strong> Ein reibungsloser Start gibt dem neuen Mitarbeiter das Gefühl, wertgeschätzt zu werden. Das reduziert die Fluktuation in der Probezeit und macht aus neuen Mitarbeitern loyale Panpharma-Botschafter.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Regionale Analyse-Sektion -->
+<section class="section-padding bg-gray-100">
+    <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 text-center">Die regionale Situation</h2>
+        <p class="text-lg text-gray-600 mb-8 max-w-3xl mx-auto text-center">
+            Der Standort Trittau liegt im Einzugsgebiet von Hamburg und Lübeck, was sowohl Chancen als auch Herausforderungen für das Recruiting mit sich bringt.
+        </p>
+
+        <!-- Interaktive Regionalanalyse -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+            <div class="card p-6">
+                <h3 class="text-2xl font-bold text-[#DC2626] mb-4 flex items-center"><i class="fas fa-exclamation-triangle mr-2"></i> Herausforderungen</h3>
+                <ul class="list-none space-y-4 text-gray-700">
+                    <li>
+                        <h4 class="font-bold text-lg flex items-center"><i class="fas fa-user-times text-[#DC2626] mr-2"></i>Wettbewerb & Fachkräftemangel</h4>
+                        <p class="text-sm">
+                            Die Arbeitslosenquote im Kreis Stormarn liegt bei nur 4.2%, der niedrigsten in Schleswig-Holstein. In einer Pendlerreichweite von 60 km konkurrieren wir mit zahlreichen Unternehmen aus Hamburg und Lübeck um Fachkräfte.
+                        </p>
+                    </li>
+                    <li>
+                        <h4 class="font-bold text-lg flex items-center"><i class="fas fa-paper-plane text-[#DC2626] mr-2"></i>Klassische Anzeigen funktionieren nicht mehr</h4>
+                        <p class="text-sm">
+                            Der Markt ist gesättigt. Reines Anzeigenschalten auf Jobportalen erzielt kaum noch Resonanz. Wir müssen proaktive und kreative Wege gehen, um die richtigen Kandidaten anzusprechen.
+                        </p>
+                    </li>
+                    <li>
+                        <h4 class="font-bold text-lg flex items-center"><i class="fas fa-user-slash text-[#DC2626] mr-2"></i>Demografischer Wandel</h4>
+                        <p class="text-sm">
+                            Viele ältere Beschäftigte werden in den kommenden Jahren ausscheiden. Wir müssen frühzeitig Nachwuchs sichern und an das Unternehmen binden, um den Personalbedarf langfristig zu decken.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <div class="card p-6">
+                <h3 class="text-2xl font-bold text-[#22C55E] mb-4 flex items-center"><i class="fas fa-lightbulb mr-2"></i> Lösungsansätze</h3>
+                <ul class="list-none space-y-4 text-gray-700">
+                    <li>
+                        <h4 class="font-bold text-lg flex items-center"><i class="fas fa-hands-helping text-[#22C55E] mr-2"></i>Arbeitgeberattraktivität steigern</h4>
+                        <p class="text-sm">
+                            Durch gezieltes Employer Branding und transparente Kommunikation von Benefits schaffen wir einen Wettbewerbsvorteil gegenüber den urbanen Arbeitgebern. Wir müssen aktiv kommunizieren, warum Trittau eine bessere Option ist.
+                        </p>
+                    </li>
+                    <li>
+                        <h4 class="font-bold text-lg flex items-center"><i class="fas fa-seedling text-[#22C55E] mr-2"></i>Nachwuchsförderung & Weiterbildung</h4>
+                        <p class="text-sm">
+                            Wir sichern Fachkräfte von morgen durch den Ausbau von Ausbildungsplätzen und eine enge Kooperation mit regionalen Hochschulen und Berufsschulen. Fortbildungs- und Förderprogramme helfen, wertvolles Know-how im Betrieb zu halten.
+                        </p>
+                    </li>
+                    <li>
+                        <h4 class="font-bold text-lg flex items-center"><i class="fas fa-running text-[#22C55E] mr-2"></i>Innovative Personalgewinnung</h4>
+                        <p class="text-sm">
+                            Wir nutzen neue Wege wie Mitarbeiter-Empfehlungsprogramme, verstärkte Präsenz in Social Media, Karrierenetzwerken und regionalen Jobmessen, um die Reichweite bei der Kandidatensuche zu erhöhen und passives Personal anzusprechen.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Video-Sektion -->
+<section id="video" class="section-padding">
+    <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Das Gesicht hinter dem Konzept.</h2>
+        <p class="text-gray-600 text-lg mb-8 max-w-2xl mx-auto">
+            Hinter Strategien und Plänen stehen immer Menschen. In meinem kurzen Video-Statement möchte ich Ihnen zeigen, wer ich bin, was mich antreibt – und warum mir die Arbeit mit Menschen so wichtig ist.
+        </p>
+        <div class="bg-gray-200 w-full max-w-3xl mx-auto rounded-xl overflow-hidden aspect-video relative card">
+            <iframe id="youtube-video" class="w-full h-full absolute inset-0" src="https://www.youtube.com/embed/_2j6Dxy30_Y" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+</section>
+
+<!-- Kontakt-Sektion -->
+<section id="kontakt" class="py-12 bg-[#333] text-white">
+    <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Lassen Sie uns sprechen.</h2>
+        <p class="text-lg md:text-xl font-light mb-6">
+            Ich freue mich darauf, meine Ideen in einem persönlichen Gespräch zu vertiefen.
+        </p>
+        <a href="mailto:philipp.krohn@gmail.com?subject=Bewerbung%20HR%20Manager%20Recruiting%20&%20Employer%20Branding%20(m/w/d)" class="bg-white text-[#0073B1] px-8 py-4 rounded-full font-bold text-lg hover:bg-gray-200 transition-colors duration-200">
+            Kontakt aufnehmen
+        </a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-400 py-12 text-sm text-center">
+    <div class="container mx-auto px-6">
+        <p>Dies ist eine Demo-Webseite, die zu Bewerbungszwecken von Philipp Krohn erstellt wurde. Alle dargestellten Daten und Beispiele sind fiktiv und dienen lediglich der Veranschaulichung der Expertise. Die Firma Panpharma, das Logo und die Jobanzeigen werden nur als Fallbeispiel verwendet.</p>
+    </div>
+</footer>
+
+<!-- Zurück-nach-oben-Button -->
+<button onclick="window.scrollTo({ top: 0, behavior: 'smooth' });" class="scroll-top hidden">
+    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"></path></svg>
+</button>
+
+<!-- Modal Overlay und Content -->
+<div id="modal-overlay" class="modal-overlay">
+    <div id="modal-container" class="modal-container">
+        <button id="modal-close" class="modal-close">&times;</button>
+        <div id="modal-content"></div>
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Logik für die interaktiven Tabs der Roadmap
+        const stepperItems = document.querySelectorAll('.stepper-item');
+        const roadmapContents = document.querySelectorAll('.roadmap-content');
+    
+        const showContent = (phase) => {
+            roadmapContents.forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(phase + '-content').classList.add('active');
+        };
+    
+        stepperItems.forEach(item => {
+            item.addEventListener('click', () => {
+                stepperItems.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                const phase = item.getAttribute('data-phase');
+                showContent(phase);
+            });
+        });
+
+        // Logik für den Kununu-Score-Simulator
+        const kununuSteps = document.querySelectorAll('.kununu-step');
+        const kununuDetails = document.querySelectorAll('.kununu-detail-text');
+        const kununuValueDisplay = document.getElementById('kununu-value');
+        const initialKununuValue = 3.2;
+        
+        let currentScore = initialKununuValue;
+        
+        const updateKununuScore = (step) => {
+            if (step === 1) {
+                currentScore = initialKununuValue + 0.3;
+            } else if (step === 2) {
+                currentScore = initialKununuValue + 0.6;
+            } else if (step === 3) {
+                currentScore = initialKununuValue + 0.8;
+            } else {
+                currentScore = initialKununuValue;
+            }
+            kununuValueDisplay.textContent = currentScore.toFixed(1);
+        };
+        
+        kununuSteps.forEach(step => {
+            step.addEventListener('click', (event) => {
+                kununuSteps.forEach(s => s.classList.remove('active'));
+                kununuDetails.forEach(d => d.classList.remove('active'));
+                event.currentTarget.classList.add('active');
+                
+                const stepIndex = parseInt(event.currentTarget.dataset.step, 10);
+                document.getElementById('kununu-detail-' + stepIndex).classList.add('active');
+                updateKununuScore(stepIndex);
+            });
+        });
+        
+        // Initialer Zustand
+        updateKununuScore(0);
+    
+        // Logik für den "Zurück nach oben"-Button
+        const scrollTopButton = document.querySelector('.scroll-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollTopButton.style.display = 'block';
+            } else {
+                scrollTopButton.style.display = 'none';
+            }
+        });
+
+        // Logik für die interaktive Onboarding-Journey
+        const onboardingCards = document.querySelectorAll('.onboarding-card');
+        onboardingCards.forEach(card => {
+            card.addEventListener('click', (event) => {
+                onboardingCards.forEach(c => c.classList.remove('active'));
+                event.currentTarget.classList.add('active');
+            });
+        });
+
+        // Logik für die interaktiven Modals
+        const modalOverlay = document.getElementById('modal-overlay');
+        const modalClose = document.getElementById('modal-close');
+        const modalContent = document.getElementById('modal-content');
+        const triggerCards = document.querySelectorAll('[data-modal]');
+        const roadmapCards = document.querySelectorAll('[data-roadmap-modal]');
+
+
+        const modalData = {
+            'mission-modal': {
+                title: 'Sinnstiftende Mission: Panpharma rettet Leben.',
+                icon: 'fas fa-heartbeat',
+                content: `
+                    <p class="text-gray-600 mb-4">
+                        Die Mission von Panpharma ist es, Injektionspräparate zu entwickeln und herzustellen, die Leben retten und die Gesundheit verbessern. Dies ist der stärkste emotionale Anker für das Employer Branding.
+                    </p>
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <h4 class="font-bold mb-2">Umsetzung: So machen wir das greifbar.</h4>
+                        <ul class="list-none space-y-2 text-gray-700 text-sm">
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>"Eine Dosis Wirkung":</strong> Regelmäßige Kurzinterviews mit Mitarbeitern (z.B. in der Produktion), die erzählen, wie ihre Arbeit konkret dazu beiträgt, dass Patienten weltweit versorgt werden.</li>
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>Visuelle Stories:</strong> Kurze Videos oder Grafiken, die den Weg eines Produkts von der Abfüllung in Trittau bis zum Patienten nachzeichnen.</li>
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>Mission-Statement-Workshops:</strong> Einbindung von Mitarbeitern, um die Mission zu verinnerlichen und zu Botschaftern zu machen.</li>
+                        </ul>
+                    </div>
+                `
+            },
+            'reputation-modal': {
+                title: 'Steigerbare Reputation: Vom Durchschnitt zur Top-Bewertung.',
+                icon: 'fas fa-chart-line',
+                content: `
+                    <p class="text-gray-600 mb-4">
+                        Ein Kununu-Score von 3.2 ist solide, aber mit gezielten Maßnahmen können wir das Vertrauen potenzieller Bewerber deutlich erhöhen. Das Ziel ist eine transparente und offene Feedback-Kultur.
+                    </p>
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <h4 class="font-bold mb-2">Umsetzung: So schaffen wir Vertrauen.</h4>
+                        <ul class="list-none space-y-2 text-gray-700 text-sm">
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>Proaktive Antwortstrategie:</strong> Jede Bewertung wird zeitnah und persönlich beantwortet – nicht nur die positiven.</li>
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>Interne Feedbackschleife:</strong> Kritikpunkte aus Bewertungen werden in den Fachabteilungen besprochen und führen zu konkreten Verbesserungen.</li>
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>Mitarbeiter als Botschafter:</strong> Eine transparente Kampagne ermutigt zufriedene Mitarbeiter, ihre Erfahrungen zu teilen und ein authentisches Bild zu zeichnen.</li>
+                        </ul>
+                    </div>
+                `
+            },
+            'growth-modal': {
+                title: 'Wachstum am Standort Trittau: Zukunftssicherheit kommunizieren.',
+                icon: 'fas fa-industry',
+                content: `
+                    <p class="text-gray-600 mb-4">
+                        Die Investition in eine neue Abfülllinie ist ein klares Signal für Wachstum und Stabilität. Dies ist eine entscheidende Botschaft, die wir gezielt kommunizieren müssen, um Talente anzuziehen, die Wert auf Sicherheit und Innovation legen.
+                    </p>
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <h4 class="font-bold mb-2">Umsetzung: So zeigen wir unsere Stärke.</h4>
+                        <ul class="list-none space-y-2 text-gray-700 text-sm">
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>"Wir wachsen":</strong> Entwicklung von Landing Pages oder Social-Media-Serien, die den Baufortschritt der neuen Linie zeigen und die damit verbundenen Karrieremöglichkeiten hervorheben.</li>
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>Technologie-Fokus:</strong> Interviews mit den Ingenieuren und Technikern, die die neue Anlage installieren, um die Innovationskraft des Unternehmens zu demonstrieren.</li>
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>Regionale PR:</strong> Aktive Zusammenarbeit mit lokalen Medien, um die Investition und die damit verbundenen Jobs in der Region zu bewerben.</li>
+                        </ul>
+                    </div>
+                `
+            },
+            'commuter-modal': {
+                title: 'Pendlerpotential nutzen: Trittau als attraktive Alternative.',
+                icon: 'fas fa-map-marked-alt',
+                content: `
+                    <p class="text-gray-600 mb-4">
+                        Trittau liegt ideal im "Speckgürtel" von Hamburg und Lübeck. Viele Pendler suchen eine Alternative, die ihnen weniger Stress auf dem Arbeitsweg und eine bessere Work-Life-Balance ermöglicht.
+                    </p>
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <h4 class="font-bold mb-2">Umsetzung: So überzeugen wir Pendler.</h4>
+                        <ul class="list-none space-y-2 text-gray-700 text-sm">
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>"5-Minuten-Job":</strong> Gezielte Social-Media-Anzeigen im Hamburger und Lübecker Umland, die betonen, dass der Weg nach Trittau oft kürzer ist als die Fahrt durch die Innenstadt.</li>
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>Benefits-Fokus:</strong> Hervorhebung von Vorteilen wie dem Tankbonus und den Parkmöglichkeiten direkt am Werk.</li>
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>Lokale Events:</strong> Teilnahme an lokalen Karrieremessen und Gemeindeveranstaltungen, um Panpharma als attraktiven Arbeitgeber vor Ort zu positionieren.</li>
+                        </ul>
+                    </div>
+                `
+            }
+        };
+
+        const roadmapModalData = {
+            'audit': {
+                title: 'Audit & KPI-Analyse: Den Status Quo verstehen.',
+                icon: 'fas fa-search',
+                content: `
+                    <p class="text-gray-600 mb-4">
+                        Um den Erfolg neuer Maßnahmen zu messen, ist eine fundierte Ausgangsanalyse unerlässlich. Wir müssen wissen, wo wir stehen.
+                    </p>
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <h4 class="font-bold mb-2">Visueller Workflow: Der Recruiting-Funnel</h4>
+                        <img src="Audit_und_KPI_Analyse.png" alt="Funnel-Diagramm" class="w-full h-auto mt-4 rounded-lg">
+                        <ul class="list-none space-y-2 text-gray-700 text-sm mt-4">
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>Analyse:</strong> Daten-Audit der letzten 12 Monate.</li>
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>Metriken:</strong> Time-to-Hire, Cost-per-Hire, Conversion Rates (Bewerbung -> Gespräch -> Einstellung).</li>
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>Ziel:</strong> Baselines festlegen, um Fortschritte messbar zu machen.</li>
+                        </ul>
+                    </div>
+                `
+            },
+            'sla': {
+                title: '24-72-SLA: Geschwindigkeit im Bewerberprozess.',
+                icon: 'fas fa-clock',
+                content: `
+                    <p class="text-gray-600 mb-4">
+                        Eine schnelle Rückmeldung ist entscheidend für eine positive Candidate Experience. Wir wollen den Bewerbern zeigen, dass wir sie wertschätzen.
+                    </p>
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <h4 class="font-bold mb-2">Flussdiagramm: Idealer Bewerbungs-Workflow</h4>
+                        <img src="SLA_fur_Bewerbungen.png" alt="Workflow Bewerbungsprozess" class="w-full h-auto mt-4 rounded-lg">
+                        <ul class="list-none space-y-2 text-gray-700 text-sm mt-4">
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>Bewerbungseingang:</strong> Automatische Bestätigung innerhalb 24h.</li>
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>Sichtung:</strong> Persönliches Feedback (Zu- oder Absage) innerhalb 72h.</li>
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>Gespräch:</strong> Feedback innerhalb 48h nach dem Termin.</li>
+                        </ul>
+                    </div>
+                `
+            },
+            'content-campaign': {
+                title: '"Trittau Works" Content-Kampagne: Geschichten, die überzeugen.',
+                icon: 'fas fa-bullhorn',
+                content: `
+                    <p class="text-gray-600 mb-4">
+                        Authentizität schafft Vertrauen. Unsere Kampagne setzt auf reale Mitarbeiter und ihre Geschichten, um Panpharma nahbar zu machen.
+                    </p>
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <h4 class="font-bold mb-2">Konzept: Die Story hinter dem Team</h4>
+                        <img src="Trittau_Works.png" alt="Storytelling Konzept" class="w-full h-auto mt-4 rounded-lg">
+                        <ul class="list-none space-y-2 text-gray-700 text-sm mt-4">
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>Mitarbeiter-Stories:</strong> Kurzvideos oder Zitate, die den Arbeitsalltag zeigen.</li>
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>Blick hinter die Kulissen:</strong> Kurze Beiträge aus Produktion und Labor, die die Mission "Leben retten" greifbar machen.</li>
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>Kampagnen-Tuning:</strong> Gezielte A/B-Tests, um die besten Inhalte zu identifizieren.</li>
+                        </ul>
+                    </div>
+                `
+            },
+            'open-hour': {
+                title: 'Open-Hour & Campus Recruiting: Der persönliche Kontakt zählt.',
+                icon: 'fas fa-door-open',
+                content: `
+                    <p class="text-gray-600 mb-4">
+                        Ein direkter Austausch baut Barrieren ab. Mit Events am Standort schaffen wir eine niedrigschwellige Möglichkeit, Panpharma kennenzulernen.
+                    </p>
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <h4 class="font-bold mb-2">Visuelle Idee: Einladungskarte für "Open-Hour"</h4>
+                        <img src="Open_Hour.png" alt="Event-Einladung Design" class="w-full h-auto mt-4 rounded-lg">
+                        <ul class="list-none space-y-2 text-gray-700 text-sm mt-4">
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>Konzept:</strong> Monatliche Events nach Feierabend mit Werksführung und Q&A-Sessions.</li>
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>Zielgruppen:</strong> Gezielte Einladungen an lokale Jobcenter, Berufsschulen und Universitäten.</li>
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>Effekt:</strong> Persönliche Kontakte fördern Empfehlungen und zeigen die offene Kultur.</li>
+                        </ul>
+                    </div>
+                `
+            },
+            'funnel-optimization': {
+                title: 'Funnel-Optimierung & Skalierung: Maximale Effizienz erreichen.',
+                icon: 'fas fa-chart-line',
+                content: `
+                    <p class="text-gray-600 mb-4">
+                        Mit datengetriebenen Entscheidungen optimieren wir den gesamten Recruiting-Funnel. So reduzieren wir die Kosten pro Einstellung und erhöhen die Qualität der Bewerbungen.
+                    </p>
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <h4 class="font-bold mb-2">KPI-Dashboard-Demo: Zahlen, die überzeugen.</h4>
+                        <img src="Funnel_Optimierung.png" alt="Dashboard Visualisierung" class="w-full h-auto mt-4 rounded-lg">
+                        <ul class="list-none space-y-2 text-gray-700 text-sm mt-4">
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>Tracking:</strong> Messung der Performance aller Recruiting-Kanäle.</li>
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>Optimierung:</strong> Investition in die Kanäle, die die besten Kandidaten liefern.</li>
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>Reporting:</strong> Regelmäßige Berichte an die Geschäftsleitung über den Erfolg der Maßnahmen.</li>
+                        </ul>
+                    </div>
+                `
+            },
+            'referral': {
+                title: 'Referral-Programm & Talent-Pool-Pflege: Nachhaltig wachsen.',
+                icon: 'fas fa-user-friends',
+                content: `
+                    <p class="text-gray-600 mb-4">
+                        Die besten neuen Mitarbeiter kommen oft von den eigenen Leuten. Wir nutzen dieses Potenzial und bauen einen nachhaltigen Talent-Pool auf.
+                    </p>
+                    <div class="bg-gray-100 p-4 rounded-lg">
+                        <h4 class="font-bold mb-2">Workflow: So aktivieren wir unser Netzwerk</h4>
+                        <img src="Referral_Programm.png" alt="Workflow Referral Programm" class="w-full h-auto mt-4 rounded-lg">
+                        <ul class="list-none space-y-2 text-gray-700 text-sm mt-4">
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>Prämien-Programm:</strong> Einführung eines transparenten, attraktiven Bonus-Systems für erfolgreiche Empfehlungen.</li>
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>Pool-Pflege:</strong> Regelmäßige Updates an passive Kandidaten, um im Gedächtnis zu bleiben.</li>
+                            <li><i class="fas fa-check-circle list-item-icon"></i> <strong>Active Sourcing:</strong> Gezielte Ansprache von Talenten, die zu unseren Werten passen.</li>
+                        </ul>
+                    </div>
+                `
+            },
+            'onboarding-step-1': {
+                title: 'Onboarding Schritt 1: Tag -14',
+                icon: 'fas fa-envelope-open-text',
+                content: `
+                    <h4 class="font-bold text-lg mb-2 text-[#0073B1]">Willkommens-E-Mail & Buddy-Zuweisung</h4>
+                    <p class="text-gray-600 text-sm">Zwei Wochen vor dem ersten Arbeitstag erhält der neue Mitarbeiter eine persönliche Willkommens-E-Mail. Darin finden sich nicht nur die wichtigsten organisatorischen Infos, sondern auch der Name und Kontakt des Onboarding-Buddys – der ersten Ansprechperson im Team. So beginnt die Beziehung schon vor dem ersten Tag.</p>
+                `
+            },
+            'onboarding-step-2': {
+                title: 'Onboarding Schritt 2: Tag -7',
+                icon: 'fas fa-laptop-code',
+                content: `
+                    <h4 class="font-bold text-lg mb-2 text-[#0073B1]">Tech-Setup & Admin-Vorbereitung</h4>
+                    <p class="text-gray-600 text-sm">Die Personalabteilung und die IT arbeiten Hand in Hand, um sicherzustellen, dass am ersten Tag alles bereitsteht. Der Arbeitsplatz ist eingerichtet, die Hardware ist konfiguriert und alle notwendigen Zugänge sind freigeschaltet. Das spart Zeit und vermeidet unnötigen Stress am ersten Tag.</p>
+                `
+            },
+            'onboarding-step-3': {
+                title: 'Onboarding Schritt 3: Tag 1',
+                icon: 'fas fa-briefcase',
+                content: `
+                    <h4 class="font-bold text-lg mb-2 text-[#0073B1]">Reibungsloser Start & Kennenlernen</h4>
+                    <p class="text-gray-600 text-sm">Der erste Tag ist der wichtigste. Er beginnt mit einer persönlichen Begrüßung durch die Führungskraft und den Buddy. Der Fokus liegt auf dem Kennenlernen des Teams und des Arbeitsumfelds. Die administrativen Aufgaben sind bereits erledigt, sodass sich der neue Mitarbeiter voll und ganz auf das Einleben konzentrieren kann.</p>
+                `
+            }
+        };
+
+        const showModal = (modalId, dataSet) => {
+            const data = dataSet[modalId];
+            modalContent.innerHTML = `
+                <h3 class="text-3xl font-bold mb-4 flex items-center text-[#0073B1]">
+                    <i class="${data.icon} mr-4"></i>${data.title}
+                </h3>
+                ${data.content}
+            `;
+            modalOverlay.style.display = 'flex';
+        };
+
+        triggerCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const modalId = card.dataset.modal;
+                showModal(modalId, modalData);
+            });
+        });
+
+        roadmapCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const modalId = card.dataset.roadmapModal;
+                showModal(modalId, roadmapModalData);
+            });
+        });
+
+        modalClose.addEventListener('click', () => {
+            modalOverlay.style.display = 'none';
+        });
+
+        window.addEventListener('click', (event) => {
+            if (event.target === modalOverlay) {
+                modalOverlay.style.display = 'none';
+            }
+        });
+
+        onboardingCards.forEach(card => {
+            card.addEventListener('click', () => {
+                onboardingCards.forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                const modalId = card.dataset.onboardingModal;
+                showModal(modalId, roadmapModalData);
+            });
+        });
+    });
+</script>
+</body>
+</html>
+
